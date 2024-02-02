@@ -1,0 +1,5 @@
+[
+  {"articleId": 0, "userId": 0, "author": "제티", "title": "안녕 나는 제티야", "description": "안녕 나는 제티야 만나서 반가워", "imageUrl": "https://jiho-image-storage.s3.ap-northeast-2.amazonaws.com/1697511601970_07108e41fc920d8696c7f3b1c24d736c.jpeg", "videoUrl": "", "createdAt": "2024-02-01T15:17:12", "updatedAt": "2024-02-02T09:31:53", "likeCount": 16426, "isLiked": true, "commentCount": 5325},
+  {"articleId": 1, "userId": 1, "author": "릭오", "title": "안녕 나는 릭오야", "description": "안녕 나는 릭오야 만나서 반가워", "imageUrl": "https://jiho-image-storage.s3.ap-northeast-2.amazonaws.com/1697511667800_00538c23e8be803f59a85f0a7b97c7a8.jpeg", "videoUrl": "", "createdAt": "2024-02-01T14:17:12", "updatedAt": "2024-02-02T09:32:53", "likeCount": 15977, "isLiked": true, "commentCount": 5111},
+  {"articleId": 2, "userId": 2, "author": "카리나", "title": "안녕 나는 카리나야", "description": "안녕 나는 카리나야 만나서 반가워", "imageUrl": "https://cdn.spotvnews.co.kr/news/photo/202301/580829_806715_1352.jpg", "videoUrl": "", "createdAt": "2024-02-01T13:17:12", "updatedAt": "2024-02-02T09:33:53", "likeCount": 6426, "isLiked": false, "commentCount": 3789}
+]
