@@ -3,7 +3,7 @@ const PostPage = () => {
     <>
       <p>PostPage</p>
     </>
-  )
-}
+  );
+};
 
 export default PostPage;

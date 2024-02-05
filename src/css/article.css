@@ -15,7 +15,6 @@
 }
 
 .article-user-name {
-
 }
 
 .article-image-div {
@@ -31,14 +30,13 @@
 
 .article-like-div {
   display: flex;
+  gap: 10px;
 }
 
 .article-like-icon {
-  
 }
 
 .article-like-count {
-  
 }
 
 .article-control-div {
@@ -48,7 +46,6 @@
 }
 
 .article-control-button {
-
 }
 
 .article-content-div {
@@ -64,9 +61,7 @@
 }
 
 .article-content-title {
-
 }
-
 
 .article-content-description-div {
   display: flex;
@@ -75,7 +70,10 @@
 }
 
 .article-content-description {
-  
+}
+
+.article-content-text {
+  font-weight: bold;
 }
 
 .article-comment-div {
@@ -83,15 +81,19 @@
 }
 
 .article-comment-count {
-
+  &:hover {
+    cursor: pointer;
+    color: #ffc0cb;
+  }
 }
 
 .article-createdtime-div {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .article-createdtime-text {
-  
+  font-size: 1.5rem;
+  color: #747bff;
 }

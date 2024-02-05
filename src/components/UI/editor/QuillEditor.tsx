@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { patchArticle } from "../../../api/article";
+import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { patchArticle } from '../../../api/article';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -28,7 +28,7 @@ interface NewArticleData {
   description: string;
 }
 
-const QuillEditor: React.FC<ArticleProps> = ({article}) => {
+const QuillEditor: React.FC<ArticleProps> = ({ article }) => {
   const { articleId } = useParams() as { articleId: string };
   const navigate = useNavigate();
   const [description, setDescription] = useState(article.description);
@@ -59,8 +59,7 @@ const QuillEditor: React.FC<ArticleProps> = ({article}) => {
       articleId: Number(articleId),
       newContent: { description },
     });
-  }
-
+  };
 
   return (
     <div>
@@ -70,7 +69,7 @@ const QuillEditor: React.FC<ArticleProps> = ({article}) => {
         <button type="submit">수정완료</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default QuillEditor;

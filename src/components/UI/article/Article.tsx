@@ -1,8 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import '../../../css/article.css';
 import moment from 'moment';
-import 'moment/locale/ko';
+import 'moment/dist/locale/ko';
 import DOMPurify from 'dompurify';
+// import { ReactComponent as LikeIcon } from "../assets/img/mainTitle.svg";
+// import { ReactComponent as MainTitle } from "../assets/img/mainTitle.svg";
+import LikeFillIcon from '../../../assets/likeFill.svg';
+import LikeIcon from '../../../assets/like.svg';
 
 interface ArticleData {
   articleId: number;
@@ -23,9 +27,9 @@ interface ArticleProps {
   article: ArticleData;
 }
 
-const Article: React.FC<ArticleProps> = ({article}) => {
+const Article: React.FC<ArticleProps> = ({ article }) => {
   const navigate = useNavigate();
-  const isArticlePage = window.location.pathname !== "/";
+  const isArticlePage = window.location.pathname !== '/';
 
   const handleNavigate = () => {
     if (!isArticlePage) {
@@ -40,33 +44,54 @@ const Article: React.FC<ArticleProps> = ({article}) => {
         <p className="article-user-name">{article.author}</p>
       </div>
       <div className="article-image-div">
-        <img src={article.imageUrl} alt="content image" className="article-image-img"></img>
+        <img
+          src={article.imageUrl}
+          alt="content image"
+          className="article-image-img"
+        ></img>
       </div>
       <div className="article-like-div">
-        <img className="article-like-icon"></img>
+        {article.isLiked ? (
+          <img src={LikeFillIcon} className="article-like-icon" alt="liked" />
+        ) : (
+          <img src={LikeIcon} className="article-like-icon" alt="not liked yet" />
+        )}
         <p className="article-like-count">{article.likeCount}</p>
       </div>
       <div className="article-control-div">
-        {isArticlePage && <button className="article-control-button" onClick={() => navigate(`/article/${article.articleId}/edit`)}>수정</button>}
+        {isArticlePage && (
+          <button
+            className="article-control-button"
+            onClick={() => navigate(`/article/${article.articleId}/edit`)}
+          >
+            수정
+          </button>
+        )}
       </div>
       <div className="article-content-div">
         <div className="article-content-title-div">
-          <p>제목</p>
+          <p className="article-content-text">제목</p>
           <p className="article-content-title">{article.title}</p>
         </div>
         <div className="article-content-description-div">
-          <p>내용</p>
-          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article?.description) }} />
+          <p className="article-content-text">내용</p>
+          <div
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article?.description) }}
+          />
         </div>
       </div>
       <div className="article-comment-div">
-        {article.commentCount ? <p className="article-comment-count">{`댓글 ${article.commentCount}개 보기`}</p> : <></>}
+        {article.commentCount ? (
+          <p className="article-comment-count">{`댓글 ${article.commentCount}개 보기`}</p>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="article-createdtime-div">
         <p className="article-createdtime-text">{moment(article.createdAt).fromNow()}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Article;

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 interface NewArticleData {
   description: string;
@@ -6,7 +6,9 @@ interface NewArticleData {
 
 const getArticles = async () => {
   try {
-    const { data } = await axios.get(`https://damoinda-dev-firebase-default-rtdb.firebaseio.com/article.json`);
+    const { data } = await axios.get(
+      `https://damoinda-dev-firebase-default-rtdb.firebaseio.com/article.json`,
+    );
     return data;
   } catch (error) {
     return error;
@@ -15,7 +17,9 @@ const getArticles = async () => {
 
 const getArticle = async (articleId: number) => {
   try {
-    const { data } = await axios.get(`https://damoinda-dev-firebase-default-rtdb.firebaseio.com/article/${articleId}.json`);
+    const { data } = await axios.get(
+      `https://damoinda-dev-firebase-default-rtdb.firebaseio.com/article/${articleId}.json`,
+    );
     return data;
   } catch (error) {
     return error;
@@ -24,7 +28,9 @@ const getArticle = async (articleId: number) => {
 
 const postArticle = async () => {
   try {
-    const { data } = await axios.post(`https://damoinda-dev-firebase-default-rtdb.firebaseio.com/article.json`);
+    const { data } = await axios.post(
+      `https://damoinda-dev-firebase-default-rtdb.firebaseio.com/article.json`,
+    );
     return data;
   } catch (error) {
     return error;
@@ -33,16 +39,14 @@ const postArticle = async () => {
 
 const patchArticle = async (articleId: number, newContent: NewArticleData) => {
   try {
-    const { data } = await axios.patch(`https://damoinda-dev-firebase-default-rtdb.firebaseio.com/article/${articleId}.json`, newContent);
+    const { data } = await axios.patch(
+      `https://damoinda-dev-firebase-default-rtdb.firebaseio.com/article/${articleId}.json`,
+      newContent,
+    );
     return data;
   } catch (error) {
     return error;
   }
 };
 
-export {
-  getArticles,
-  getArticle,
-  postArticle,
-  patchArticle,
-};
+export { getArticles, getArticle, postArticle, patchArticle };

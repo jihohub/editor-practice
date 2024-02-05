@@ -1,8 +1,8 @@
-import React from "react";
-import Article from "../../components/UI/article/Article";
-import { useQuery } from "@tanstack/react-query";
-import { getArticles } from "../../api/article";
-import Loader from "../../components/UI/loader/Loader";
+import React from 'react';
+import Article from '../../components/UI/article/Article';
+import { useQuery } from '@tanstack/react-query';
+import { getArticles } from '../../api/article';
+import Loader from '../../components/UI/loader/Loader';
 
 interface ArticleData {
   articleId: number;
@@ -20,28 +20,28 @@ interface ArticleData {
 }
 
 const HomePage = () => {
-  const {data: articles, isLoading, isError} = useQuery({
+  const {
+    data: articles,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ['articles'],
     queryFn: () => getArticles(),
   });
 
   if (isLoading) {
-    return <Loader />
+    return <Loader />;
   }
 
   return (
     <React.Suspense fallback={<Loader />}>
       <div>
         {articles?.map((article: ArticleData, index: number) => {
-          return (
-            <Article article={article} key={index} />
-          )
-        })
-        
-        }
+          return <Article article={article} key={index} />;
+        })}
       </div>
     </React.Suspense>
-  )
-}
+  );
+};
 
 export default HomePage;

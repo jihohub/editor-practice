@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { patchArticle } from "../../../api/article";
-import { Editor } from "react-draft-wysiwyg";
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { patchArticle } from '../../../api/article';
+import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import htmlToDraft from 'html-to-draftjs';
-import draftjsToHtml from "draftjs-to-html";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import draftjsToHtml from 'draftjs-to-html';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 interface ArticleData {
   articleId: number;
@@ -31,14 +31,14 @@ interface NewArticleData {
   description: string;
 }
 
-const DraftEditor: React.FC<ArticleProps> = ({article}) => {
+const DraftEditor: React.FC<ArticleProps> = ({ article }) => {
   const { articleId } = useParams() as { articleId: string };
   const navigate = useNavigate();
 
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [htmlString, setHtmlString] = useState("");
+  const [htmlString, setHtmlString] = useState('');
 
-  const updateTextDescription = async (state) => {
+  const updateTextDescription = async state => {
     await setEditorState(state);
     const html = draftjsToHtml(convertToRaw(editorState.getCurrentContent()));
     setHtmlString(html);
@@ -52,7 +52,7 @@ const DraftEditor: React.FC<ArticleProps> = ({article}) => {
       const editorState = EditorState.createWithContent(contentState);
       setEditorState(editorState);
     }
-  },[]);
+  }, []);
 
   const queryClient = useQueryClient();
   const patchMutation = useMutation({
@@ -69,7 +69,7 @@ const DraftEditor: React.FC<ArticleProps> = ({article}) => {
       alert('내 작품 수정이 완료되었습니다.');
       navigate(`/article/${articleId}`);
     },
-    onError: (error: string) => {
+    onError: () => {
       alert('내 작품 수정에 실패했습니다.');
     },
   });
@@ -80,7 +80,7 @@ const DraftEditor: React.FC<ArticleProps> = ({article}) => {
       articleId: Number(articleId),
       newContent: { description: htmlString },
     });
-  }
+  };
 
   return (
     <div>
@@ -89,18 +89,18 @@ const DraftEditor: React.FC<ArticleProps> = ({article}) => {
         <Editor
           editorState={editorState}
           onEditorStateChange={updateTextDescription}
-          localization={{ locale: "ko" }}
+          localization={{ locale: 'ko' }}
           editorStyle={{
-            height: "400px",
-            width: "100%",
-            border: "3px solid lightgray",
-            padding: "20px",
+            height: '400px',
+            width: '100%',
+            border: '3px solid lightgray',
+            padding: '20px',
           }}
         />
         <button type="submit">수정완료</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default DraftEditor;
